@@ -1,3 +1,5 @@
 .idea
 .metadata
 alura.iml
+.project
+.classpath
