@@ -15,7 +15,7 @@ public class OrdenaStrings {
 						return -1;
 					if(s1.length() > s2.length())
 						return 1;
-					return 0;	
+					return 0;
 				});
 
 				palavras.sort(Comparator.comparing(s -> s.length()));
@@ -26,7 +26,7 @@ public class OrdenaStrings {
 				Consumer<String> impressor = System.out::println;
 				palavras.forEach(impressor);
 
-        palavras.forEach((s) -> System.out.println(s));
+        palavras.forEach(System.out::println);
 
     }
 }
