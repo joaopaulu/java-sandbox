@@ -10,15 +10,20 @@ import com.example.springboot.repositories.ProdutoRepository;
 
 @Service
 public class ProdutoService {
-	 @Autowired
-	 ProdutoRepository produtoRepository;
-	 
-	 public List<ProdutoModel> todosProdutos(){
-		 return produtoRepository.findAll();
-	 }
-	 
-	 public ProdutoModel inserir(ProdutoModel produto) {
-		 return produtoRepository.save(produto);
-		 
-	 }
+	@Autowired
+	ProdutoRepository produtoRepository;
+
+	public List<ProdutoModel> todosProdutos() {
+		return produtoRepository.findAll();
+	}
+
+	public ProdutoModel inserir(ProdutoModel produto) {
+		return produtoRepository.save(produto);
+
+	}
+
+	public ProdutoModel editar(ProdutoModel produto) {
+		return produtoRepository.save(produto);
+
+	}
 }

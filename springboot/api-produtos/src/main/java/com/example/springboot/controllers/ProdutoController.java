@@ -30,12 +30,11 @@ public class ProdutoController {
 			return new ResponseEntity<List<ProdutoModel>>(produtosList, HttpStatus.OK);
 		}
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<ProdutoModel> inserirProduto(@RequestBody ProdutoModel produto) {
 		produtoService.inserir(produto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(produto);
 	}
-	
 
 }
