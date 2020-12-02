@@ -26,4 +26,9 @@ public class ProdutoController {
 		return produtoRepository.findById(id);
 	}
 
+	@PostMapping("/produto")
+	public  Produto salvarProduto(@RequestBody Produto produto){
+		return produtoRepository.save(produto);
+	}
+
 }
