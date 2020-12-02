@@ -31,4 +31,16 @@ public class ProdutoController {
 		return produtoRepository.save(produto);
 	}
 
+	@DeleteMapping("/produto")
+	public void deleteProduto(@RequestBody Produto produto){
+		produtoRepository.delete(produto);
+	}
+
+	@PutMapping("/produto")
+	public Produto atualizaProduto(@RequestBody Produto produto){
+		return produtoRepository.save(produto);
+	}
+
+
+
 }
