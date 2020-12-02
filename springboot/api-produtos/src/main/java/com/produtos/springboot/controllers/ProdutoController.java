@@ -3,38 +3,27 @@ package com.produtos.springboot.controllers;
 import java.util.List;
 
 import com.produtos.springboot.models.Produto;
-import com.produtos.springboot.service.ProdutoService;
+import com.produtos.springboot.repository.ProdutoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping(value="/api")
 public class ProdutoController {
 
 	@Autowired
-	private ProdutoService produtoService;
+	ProdutoRepository produtoRepository;
 
-	@GetMapping
-	public ResponseEntity<List<Produto>> getAllProdutos() {
-		List<Produto> produtosList = produtoService.todosProdutos();
-		if (produtosList.isEmpty()) {
-			return ResponseEntity.notFound().build();
-		} else {
-			return new ResponseEntity<List<Produto>>(produtosList, HttpStatus.OK);
-		}
+	@GetMapping("/produtos")
+	public List<Produto> listaProdutos(){
+		return produtoRepository.findAll();
 	}
 
-	@PostMapping
-	public ResponseEntity<Produto> inserirProduto(@RequestBody Produto produto) {
-		produtoService.inserir(produto);
-		return ResponseEntity.status(HttpStatus.CREATED).body(produto);
+	@GetMapping("/produto/{id}")
+	public Produto listaProdutoUnico(@PathVariable(value="id") long id){
+		return produtoRepository.findById(id);
 	}
 
 }
