@@ -1,28 +1,28 @@
-package com.example.springboot.service;
+package com.produtos.springboot.service;
 
 import java.util.List;
 
+import com.produtos.springboot.models.Produto;
+import com.produtos.springboot.repository.ProdutoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.springboot.models.ProdutoModel;
-import com.example.springboot.repositories.ProdutoRepository;
 
 @Service
 public class ProdutoService {
 	@Autowired
 	ProdutoRepository produtoRepository;
 
-	public List<ProdutoModel> todosProdutos() {
+	public List<Produto> todosProdutos() {
 		return produtoRepository.findAll();
 	}
 
-	public ProdutoModel inserir(ProdutoModel produto) {
+	public Produto inserir(Produto produto) {
 		return produtoRepository.save(produto);
 
 	}
 
-	public ProdutoModel editar(ProdutoModel produto) {
+	public Produto editar(Produto produto) {
 		return produtoRepository.save(produto);
 
 	}

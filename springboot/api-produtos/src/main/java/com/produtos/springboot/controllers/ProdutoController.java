@@ -1,6 +1,9 @@
-package com.example.springboot.controllers;
+package com.produtos.springboot.controllers;
 
 import java.util.List;
+
+import com.produtos.springboot.models.Produto;
+import com.produtos.springboot.service.ProdutoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.springboot.models.ProdutoModel;
-import com.example.springboot.service.ProdutoService;
-
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
@@ -22,17 +22,17 @@ public class ProdutoController {
 	private ProdutoService produtoService;
 
 	@GetMapping
-	public ResponseEntity<List<ProdutoModel>> getAllProdutos() {
-		List<ProdutoModel> produtosList = produtoService.todosProdutos();
+	public ResponseEntity<List<Produto>> getAllProdutos() {
+		List<Produto> produtosList = produtoService.todosProdutos();
 		if (produtosList.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		} else {
-			return new ResponseEntity<List<ProdutoModel>>(produtosList, HttpStatus.OK);
+			return new ResponseEntity<List<Produto>>(produtosList, HttpStatus.OK);
 		}
 	}
 
 	@PostMapping
-	public ResponseEntity<ProdutoModel> inserirProduto(@RequestBody ProdutoModel produto) {
+	public ResponseEntity<Produto> inserirProduto(@RequestBody Produto produto) {
 		produtoService.inserir(produto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(produto);
 	}
