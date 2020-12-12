@@ -3,3 +3,10 @@
 alura.iml
 .project
 .classpath
+bin/
+gradle/
+gradlew.bat
+*.gradle
+.settings/
+gradlew
+.gitattributes
