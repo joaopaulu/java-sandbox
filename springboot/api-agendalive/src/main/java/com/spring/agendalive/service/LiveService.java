@@ -1,14 +1,16 @@
 package com.spring.agendalive.service;
 
-import com.spring.agendalive.document.LiveDocument;
+import com.spring.agendalive.model.Live;
 import com.spring.agendalive.repository.LiveRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class LiveService {
@@ -16,7 +18,7 @@ public class LiveService {
     @Autowired
     LiveRepository liveRepository;
 
-    public Page<LiveDocument> findAll(Pageable pageable, String flag){
+    public Page<Live> findAll(Pageable pageable, String flag){
         if(flag != null && flag.equals("next")){
             return liveRepository.findByLiveDateAfterOrderByLiveDateAsc(LocalDateTime.now(), pageable);
         }else if(flag != null && flag.equals("previous")){
@@ -26,15 +28,16 @@ public class LiveService {
         }
     }
 
-    public Optional<LiveDocument> findById(String id){
-        return liveRepository.findById(id);
+    public Live buscarLivePeloCodigo(Long id) {
+        return this.liveRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
 
-    public LiveDocument save(LiveDocument liveDocument){
-        return liveRepository.save(liveDocument);
+    public Live atualizar(Long id, Live pessoa){
+        final Live liveSalva = buscarLivePeloCodigo(id);
+        BeanUtils.copyProperties(pessoa, liveSalva, "id");
+
+        return this.liveRepository.save(liveSalva);
     }
 
-    public void delete(LiveDocument liveDocument){
-        liveRepository.delete(liveDocument);
-    }
+
 }

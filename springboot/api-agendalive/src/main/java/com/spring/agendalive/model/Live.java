@@ -1,25 +1,37 @@
-package com.spring.agendalive.document;
+package com.spring.agendalive.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
-@Document
-public class LiveDocument {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "live")
+public class Live {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String liveName;
+
     private String channelName;
+
     private LocalDateTime liveDate;
+
     private String liveLink;
+
     private LocalDateTime registrationDate;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,3 +75,4 @@ public class LiveDocument {
         this.registrationDate = registrationDate;
     }
 }
+
