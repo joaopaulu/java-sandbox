@@ -14,3 +14,9 @@ INSERT INTO live (live_name, channel_name, live_date, live_link, registration_da
 INSERT INTO live (live_name, channel_name, live_date, live_link, registration_date) values ('Do Java ao Jakarta EE 9, a história', 'SouJava', '2020-05-24', 'https://youtu.be/T5DYpK8qoVI', '2020-05-22');
 
 INSERT INTO live (live_name, channel_name, live_date, live_link, registration_date) values ('O Futuro da Rocketseat', 'Rocketseat', '2020-11-23', 'https://youtu.be/cGTJQwHmGWc', '2020-11-24');
+
+INSERT INTO live (live_name, channel_name, live_date, live_link, registration_date) values ('Universo Go | Rocketseat', 'Rocketseat', '2021-05-23', 'https://youtu.be/7vSwoy63cy0', '2021-05-27');
+
+INSERT INTO live (live_name, channel_name, live_date, live_link, registration_date) values ('Universo Java | Rocketseat', 'Rocketseat', '2021-03-20', 'https://youtu.be/BVWdPuNjuiY', '2021-04-21');
+
+INSERT INTO live (live_name, channel_name, live_date, live_link, registration_date) values ('Guia DEFINITIVO de Aprendendo a Aprender', 'Fabio Akita', '2021-02-15', 'https://youtu.be/oUPaJxk6TZ0', '2021-06-23');
