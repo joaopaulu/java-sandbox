@@ -5,8 +5,12 @@ alura.iml
 .classpath
 bin/
 gradle/
+.gradle/
 gradlew.bat
 *.gradle
 .settings/
 gradlew
 .gitattributes
+*.iml
+out/
+build/
