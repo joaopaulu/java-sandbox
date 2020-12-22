@@ -11,16 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping(value="/api")
 @Api(value="API REST Produtos")
-@CrossOrigin(origins = "*")
 public class ProdutoController {
 
 	@Autowired
 	ProdutoRepository produtoRepository;
 
-	@GetMapping("/produtos")
+	@GetMapping("/produto")
 	@ApiOperation(value = "Retorna uma lista de produtos")
 	public List<Produto> listaProdutos(){
 		return produtoRepository.findAll();
@@ -38,13 +39,13 @@ public class ProdutoController {
 		return produtoRepository.save(produto);
 	}
 
-	@DeleteMapping("/produto")
+	@DeleteMapping("/produto/{id}")
 	@ApiOperation(value = "Deleta um produto")
 	public void deleteProduto(@RequestBody Produto produto){
 		produtoRepository.delete(produto);
 	}
 
-	@PutMapping("/produto")
+	@PutMapping("/produto/{id}")
 	@ApiOperation(value = "Atualiza um produto")
 	public Produto atualizaProduto(@RequestBody Produto produto){
 		return produtoRepository.save(produto);
