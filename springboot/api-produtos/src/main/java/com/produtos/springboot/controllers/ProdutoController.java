@@ -41,8 +41,8 @@ public class ProdutoController {
 
 	@DeleteMapping("/produto/{id}")
 	@ApiOperation(value = "Deleta um produto")
-	public void deleteProduto(@RequestBody Produto produto){
-		produtoRepository.delete(produto);
+	public void deleteProduto(@PathVariable(value="id") Long id){
+		produtoRepository.deleteById(id);
 	}
 
 	@PutMapping("/produto/{id}")
