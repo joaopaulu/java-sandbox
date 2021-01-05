@@ -1,9 +1,14 @@
-package com.udemy.compras;
+package com.udemy.compras.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 
 @Data
 @AllArgsConstructor
@@ -12,7 +17,7 @@ import javax.persistence.Entity;
 public class Cliente {
 
     @Id
-    @Gene
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;

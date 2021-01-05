@@ -1,12 +1,6 @@
-type Cliente{
-    nome:String
-    email:String
+type Query{
 }
 
-type Query{
-    hello:String
+type Mutation{
 
-    soma(a:Int, b:Int):Int
-
-    clientes:[Cliente]
 }
