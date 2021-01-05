@@ -3,10 +3,9 @@ package com.udemy.compras.graphql;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.udemy.compras.model.Cliente;
-import com.udemy.compras.repositories.ClienteRepository;
+import com.udemy.compras.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,31 +13,25 @@ import java.util.List;
 public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolver {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteService clienteService;
 
     public Cliente cliente(Long id){
-        return clienteRepository.findById(id).orElse(null);
+        return clienteService.findById(id);
     }
 
     public List<Cliente> clientes(){
-        return clienteRepository.findAll();
+        return clienteService.findAll();
     }
 
-    @Transactional
     public Cliente saveCliente(Long id, String nome, String email){
         Cliente cliente = new Cliente();
         cliente.setId(id);
         cliente.setNome(nome);
         cliente.setEmail(email);
-        return clienteRepository.save(cliente);
+        return clienteService.save(cliente);
     }
 
-    @Transactional
     public Boolean deleteCleinte(Long id){
-        if(clienteRepository.findById(id).isPresent()){
-            clienteRepository.deleteById(id);
-            return true;
-        }
-        return false;
+        return clienteService.deleteById(id);
     }
 }
