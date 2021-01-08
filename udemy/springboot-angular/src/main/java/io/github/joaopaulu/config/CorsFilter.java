@@ -27,7 +27,7 @@ public class CorsFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
 
         // TODO: Configurar para diferentes ambientes
-        String originPermitida = "http://localhost:4200";
+        String originPermitida = "*";
         response.setHeader("Access-Control-Allow-Origin", originPermitida);
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
